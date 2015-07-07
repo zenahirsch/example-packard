@@ -16,6 +16,8 @@ var getTemplate = function (path) {
     return template;
 };
 
+app.set('port', (process.env.PORT || 5000));
+
 app.use(express.static('static'));
 
 app.use(function (req, res, next) {
@@ -47,3 +49,7 @@ app.route('/')
     .get(function (req, res) {
         res.render('main', {});
     });
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
