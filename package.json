@@ -1,0 +1,16 @@
+{
+  "name": "example-packard",
+  "version": "1.0.0",
+  "description": "An example using the Packard module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zena Hirsch <hirsch.zena@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "handlebars": "^3.0.3"
+  }
+}
