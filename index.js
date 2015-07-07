@@ -1,11 +1,12 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var Handlebars = require('handlebars');
 var template_cache = {};
 var layout_path = 'layout';
 var cache_templates = false;
-var Packard = require('../packard.js');
+var Packard = require('../packard');
 
 var getTemplate = function (path) {
     if (!template_cache[path]) {
@@ -47,7 +48,18 @@ app.use(bodyParser.json());
 
 app.route('/')
     .get(function (req, res) {
-        res.render('main', {});
+        console.log(process.env.DATABASE_URL);
+        
+        var game = new Packard({
+            title: 'Example Game',
+            author: 'Zena Hirsch',
+            version: '1.0',
+            database_url: process.env.DATABASE_URL
+        });
+
+        res.render('main', {
+            results: game.save()
+        });
     });
 
 app.listen(app.get('port'), function() {
