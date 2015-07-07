@@ -6,7 +6,7 @@ var Handlebars = require('handlebars');
 var template_cache = {};
 var layout_path = 'layout';
 var cache_templates = false;
-var Packard = require('../packard');
+var Packard = require('./packard');
 
 var getTemplate = function (path) {
     if (!template_cache[path]) {
@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 app.route('/')
     .get(function (req, res) {
         console.log(process.env.DATABASE_URL);
-        
+
         var game = new Packard({
             title: 'Example Game',
             author: 'Zena Hirsch',
